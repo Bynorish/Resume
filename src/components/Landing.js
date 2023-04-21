@@ -10,7 +10,15 @@ function Landing() {
   const handleLogin = (event) => {
     event.preventDefault();
     console.log("Login clicked");
-    // TODO: implement login logic
+    if (username === "admin" && password === "admin") {
+      nav("/admin");
+    }
+    else if (username === "user" && password === "user") {
+      nav("/user");
+    }
+     else {
+      alert("Invalid login credentials.");
+    }
   }
 
   const handleRegister = (event) => {
@@ -60,12 +68,11 @@ const registerUser = async (username, password) => {
     if (!response.ok) {
       throw new Error('Registration failed');
     }
-
     const data = await response.json();
     console.log('User registered:', data);
+
   } catch (error) {
     console.error('Error:', error);
-  }
-}
+  }}
 
 export default Landing;

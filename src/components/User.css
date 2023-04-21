@@ -1,0 +1,69 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .user h1 {
+    margin-bottom: 20px;
+  }
+  
+  .user label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .user select,
+  .user input,
+  .user textarea {
+    width: 100%;
+  }
+  
+  .user form {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user form label:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .user-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .user-buttons button {
+    background-color: green;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 24px;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+  }
+  
+  .user-buttons button:hover {
+    background-color: darkgreen;
+    color: white;
+  }
