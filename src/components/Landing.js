@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Landing.css';
+import firebase from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
 function Landing() {
@@ -7,31 +8,37 @@ function Landing() {
   const [password, setPassword] = useState('');
   const nav = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     console.log("Login clicked");
-    if (username === "admin" && password === "admin") {
-      nav("/admin");
-    }
-    else if (username === "user" && password === "user") {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(username, password);
+      console.log("User logged in");
       nav("/user");
-    }
-     else {
+    } catch (error) {
       alert("Invalid login credentials.");
     }
-  }
+  };
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     console.log("Register clicked");
     event.preventDefault();
-    registerUser(username, password);
-  }
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(username, password);
+      console.log("User registered");
+      alert("Registration successful. Please log in.");
+    } catch (error) {
+      console.error("Error:", error);
+      alert(error.message);
+    }
+  };
 
   const handleAboutUs = (event) => {
     console.log("About us clicked");
     event.preventDefault();
     nav("/about-us");
-  }
+  };
+
 
 
   return (
@@ -55,24 +62,5 @@ function Landing() {
   );
 }
 
-const registerUser = async (username, password) => {
-  try {
-    const response = await fetch('API ROUTE!!!', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Registration failed');
-    }
-    const data = await response.json();
-    console.log('User registered:', data);
-
-  } catch (error) {
-    console.error('Error:', error);
-  }}
 
 export default Landing;

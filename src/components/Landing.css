@@ -45,7 +45,8 @@ body {
     padding: 10px;
     border: none;
     border-radius: 55px;
-    background-color: #4CAF50;
+    background-color: #377486;
+    margin-top: 15px;
     color: rgb(248, 248, 248);
     font-size: 26px;
     cursor: pointer;
@@ -53,5 +54,5 @@ body {
   }
   
   .login-screen button:hover {
-    background-color: #3e8e41;
+    background-color: #2e496b;
   }
