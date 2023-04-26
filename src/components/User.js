@@ -4,6 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { signOut } from '@firebase/auth';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import Button from 'react-bootstrap/Button';
 
 
 function User() {
@@ -251,13 +252,13 @@ function User() {
             />
           </label>
           <div className="user-buttons">
-            <button type="button" onClick={handleDownload}>Download</button>
-            <button onClick={handleUpdateCurrentResume}>
+            <Button variant="primary" onClick={handleDownload}>Download</Button>
+            <Button onClick={handleUpdateCurrentResume} variant={isEditable ? 'success' : 'primary'}>
               {isEditable ? 'Save' : 'Update'}
-            </button>
-            <button className="logout-button" onClick={handleLogout}>
+            </Button>
+            <Button className="logout-button" onClick={handleLogout} variant="danger">
               Logout
-            </button>
+            </Button>
           </div>
         </div>
       </form>

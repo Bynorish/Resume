@@ -1,9 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
 .user form {
-  display: flex; 
-  width: 100%;
+  display: flex;
   justify-content: flex-start;  
   background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  border: 10px solid #dee2e6;
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -17,7 +18,7 @@
 }
 
 .resume-list {
-  width: 40%;
+  width: 30%;
   margin-right: 20px;
 }
 
@@ -33,10 +34,6 @@
   margin-bottom: 10px;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.resume-list li:hover {
-  background-color: #f8f9fa;
 }
 
 .resume-list li.selected {
@@ -122,4 +119,3 @@
 .logout-button:hover {
   background-color: #2e496b;
 }
-
