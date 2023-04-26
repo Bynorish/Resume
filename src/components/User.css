@@ -2,23 +2,29 @@
 
 .user form {
   display: flex;
-  justify-content: flex-start;  
+  flex-wrap: nowrap;
   background-color: #f8f9fa;
   border: 10px solid #dee2e6;
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
 
 .user {
   display: flex;
-  width: 150%;
+  flex-direction: row;
   margin: 0 auto;
   padding: 20px;
 }
 
 .resume-list {
-  width: 30%;
+  flex: 0 0 30%;
   margin-right: 20px;
 }
 
@@ -51,6 +57,7 @@
   align-items: flex-start;
   width: 100%;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .user select,

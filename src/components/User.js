@@ -163,6 +163,7 @@ function User() {
   return (
     <div className="user">
       <form>
+
         <div className="resume-list">
           <h2>Resume List</h2>
           <ul>
@@ -178,6 +179,7 @@ function User() {
             ))}
           </ul>
         </div>
+
         <div className="main-panel">
           <h1>User Dashboard</h1>
           <label>
@@ -261,6 +263,7 @@ function User() {
             </Button>
           </div>
         </div>
+
       </form>
     </div>
   );
