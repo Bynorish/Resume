@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Landing.css';
-import firebase from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { db, auth } from '../firebase';
 
 function Landing() {
   const [username, setUsername] = useState('');
@@ -12,8 +13,12 @@ function Landing() {
     event.preventDefault();
     console.log("Login clicked");
     try {
-      await firebase.auth().signInWithEmailAndPassword(username, password);
+      const userCredential = await auth.signInWithEmailAndPassword(username, password);
       console.log("User logged in");
+  
+      const authToken = await userCredential.user.getIdToken();
+      localStorage.setItem("authToken", authToken);
+  
       nav("/user");
     } catch (error) {
       alert("Invalid login credentials.");
@@ -23,9 +28,11 @@ function Landing() {
   const handleRegister = async (event) => {
     console.log("Register clicked");
     event.preventDefault();
+
     try {
-      await firebase.auth().createUserWithEmailAndPassword(username, password);
+      const { user } = await auth.createUserWithEmailAndPassword(username, password);
       console.log("User registered");
+      await addUser(user.uid);
       alert("Registration successful. Please log in.");
     } catch (error) {
       console.error("Error:", error);
@@ -39,7 +46,32 @@ function Landing() {
     nav("/about-us");
   };
 
-
+  const addUser = async (uid) => {
+    try {
+      const resumeItems = [];
+      for (let i = 1; i <= 3; i++) {
+        resumeItems.push({
+          id: `item${i}`,
+          name: `Resume ${i}`,
+          firstName: `First Name ${i}`,
+          lastName: `Last Name ${i}`,
+          personalInfo: `Personal Info ${i}`,
+          contactInfo: `Contact Info ${i}`,
+          education: `Education ${i}`,
+          experience: `Experience ${i}`,
+          extraInfo: `ExtraInfo ${i}`,
+        });
+      }
+  
+      await setDoc(doc(collection(db, 'users'), uid), {
+        resumeItems,
+        selectedItem: 'item1',
+      });
+      console.log("User added successfully");
+    } catch (error) {
+      console.error("Error adding user: ", error);
+    }
+  };
 
   return (
     <div className="login-screen">
@@ -61,6 +93,5 @@ function Landing() {
     </div>
   );
 }
-
 
 export default Landing;
