@@ -100,6 +100,7 @@ function User() {
     }, 0);
   };
 
+  
   const handleUpdateCurrentResume = async (event) => {
     event.preventDefault();
     if (!isEditable) {
