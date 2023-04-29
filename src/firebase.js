@@ -4,7 +4,6 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyAwkZT1rrl_TGYBwA4Dq4uVgEXGSuwBLwI",
   authDomain: "resumedb-f9b09.firebaseapp.com",
